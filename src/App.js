@@ -1,19 +1,21 @@
 import React, {Component} from "react";
 import history from './history';
 import {ConnectedRouter} from 'connected-react-router';
-import {Route, Switch} from 'react-router';
+import {Route} from 'react-router-dom';
 
 import Layout from "./containers/layout";
 import Phones from "./containers/phones";
+
+import './main.css';
 
 class App extends Component {
   render(){
     return(
       <ConnectedRouter history={history}>
-        <Switch>
-          {/* <Route path='/' component={Layout} /> */}
+        {/* <Route component={Layout}> */}
+        <Layout>          
           <Route path='/' component={Phones} />
-        </Switch>
+        </Layout>
       </ConnectedRouter>
     )
   }

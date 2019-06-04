@@ -12,5 +12,7 @@ const store = createStore(createRootReducer(history), composeWithDevTools(applyM
   ))
 )
 
+// dev only
+window.store = store;
 
 export default store;

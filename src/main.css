@@ -31,6 +31,7 @@
 .book-list .thumbnail .caption{
     position:relative;
     z-index:40;
+    height: fit-content;
 }
 
 .caption{
@@ -92,9 +93,16 @@
 .rating li.filled{
     color: #d17581;
 }
-.itemButton{
+.item-button{
     margin-top: 20px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.caption-title{
+    display: flex;
+    justify-content: space-between;
 }
 .blosd button{
     cursor: default;
@@ -198,9 +206,8 @@
     cursor: pointer;
 }
 .books .book-list{
-    display: inline-block;
-    float: none;
-    vertical-align: top;
+    display: flex;
+    flex-wrap: wrap
 }
 .well{
     border-radius: 0 0 4px 4px;
@@ -413,7 +420,12 @@ nav.navbar-inverse .navbar-nav>li>a:hover,nav.navbar-inverse .navbar-nav>li>a.Ac
 }
 
 .caption h4 {
-    white-space: nowrap;
+    max-width: 170px;
+    text-align: right;
+}
+
+.wrapper-button{
+    margin-bottom: 20px;
 }
 
 .thumbnail img {
@@ -429,6 +441,7 @@ nav.navbar-inverse .navbar-nav>li>a:hover,nav.navbar-inverse .navbar-nav>li>a.Ac
 
 .thumbnail {
     padding: 0;
+    box-shadow: 2px 4px 4px rgba(123, 123, 123, 0.5);
 }
 
 .thumbnail .caption-full {
