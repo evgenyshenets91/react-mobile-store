@@ -6,7 +6,7 @@ export default [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     price: 823,
     image: "/uploads/iphone5c-selection-hero-2013.png",
-    cpu: "1.3GHz Apple A6",
+    cpu: "1.3GHz",
     camera: "8mp (3264x2448)",
     size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
     weight: "132 grams (4.7 ounces) with battery",
@@ -21,13 +21,13 @@ export default [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     price: 953,
     image: "/uploads/51u6y9Rm8QL._SY300_.jpg",
-    cpu: "1.3GHz Apple A6",
-    camera: "8mp (3264x2448)",
+    cpu: "1.56GHz",
+    camera: "12mp (3600x2448)",
     size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
-    weight: "132 grams (4.7 ounces) with battery",
+    weight: "150 grams (4.8 ounces) with battery",
     display: "4.0 326 pixel density",
-    battery: "1480 mAh",
-    memory: "16GB, 32GB and RAM 1 GB"
+    battery: "1600 mAh",
+    memory: "16GB, 128GB and RAM 1 GB"
   },
   {
     id: "3",
@@ -36,13 +36,13 @@ export default [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     price: 764,
     image: "/uploads/_35%20(1).JPG",
-    cpu: "1.3GHz Apple A6",
-    camera: "8mp (3264x2448)",
-    size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
-    weight: "132 grams (4.7 ounces) with battery",
-    display: "4.0 326 pixel density",
-    battery: "1480 mAh",
-    memory: "16GB, 32GB and RAM 1 GB"
+    cpu: "1.7GHz ",
+    camera: "6mp (2500x1648)",
+    size: "139.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    weight: "112 grams (4.7 ounces) with battery",
+    display: "4.5 326 pixel density",
+    battery: "2480 mAh",
+    memory: "32GB, 64GB and RAM 1 GB"
   },
   {
     id: "4",
@@ -51,13 +51,13 @@ export default [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     price: 674,
     image: "/uploads/Lumia1520-Front-Back-png.png",
-    cpu: "1.3GHz Apple A6",
-    camera: "8mp (3264x2448)",
-    size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
-    weight: "132 grams (4.7 ounces) with battery",
+    cpu: "1.3GHz",
+    camera: "20mp (4509x2448)",
+    size: "140.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
+    weight: "160 grams (4.7 ounces) with battery",
     display: "4.0 326 pixel density",
-    battery: "1480 mAh",
-    memory: "16GB, 32GB and RAM 1 GB"
+    battery: "2380 mAh",
+    memory: "6GB, 12GB and RAM 1 GB"
   },
   {
     id: "5",
@@ -66,12 +66,12 @@ export default [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     price: 674,
     image: "/uploads/htc-one-m7-802w-dual-sim-silver.jpg",
-    cpu: "1.3GHz Apple A6",
-    camera: "8mp (3264x2448)",
+    cpu: "2.5GHz",
+    camera: "18mp (4264x2548)",
     size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
-    weight: "132 grams (4.7 ounces) with battery",
-    display: "4.0 326 pixel density",
-    battery: "1480 mAh",
+    weight: "136 grams (4.7 ounces) with battery",
+    display: "5.0 326 pixel density",
+    battery: "2480 mAh",
     memory: "16GB, 32GB and RAM 1 GB"
   },
   {
@@ -81,12 +81,12 @@ export default [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ultricies lorem odio, at laoreet tellus sodales in. Nullam maximus eros ut tortor ultricies rutrum. Aliquam euismod lacus non est egesta",
     price: 674,
     image: "/uploads/Agnes_Case_for_Samsung_Galaxy_S6_(1)__92643_thumb.jpg",
-    cpu: "1.3GHz Apple A6",
-    camera: "8mp (3264x2448)",
+    cpu: "2.1GHz Apple A6",
+    camera: "12mp (3264x2448)",
     size: "124.4mm x 59.2mm x 8.97mm (4.9 x 2.33 x 0.35)",
     weight: "132 grams (4.7 ounces) with battery",
     display: "4.0 326 pixel density",
     battery: "1480 mAh",
-    memory: "16GB, 32GB and RAM 1 GB"
+    memory: "32GB, 64GB and RAM 1 GB"
   }
 ]

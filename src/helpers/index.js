@@ -8,7 +8,7 @@ export const arrToMap = (arr) => {
 }
 
 // функция принимает Id и выводит отдельный телефон
-const getPhoneId = (state, id) => R.prop(id, state.phones)
+export const getPhoneId = (state, id) => R.prop(id, state.phones)
 
 // пробегает по каждому элементу из state.phonesPage.ids и возвращает Телефон по такому id
 export const getPhones = state => {

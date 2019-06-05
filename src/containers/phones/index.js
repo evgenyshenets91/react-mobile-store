@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as R from 'ramda';
-import {fetchPhones, onLoadMorePhones} from '../../actions/';
+import {fetchPhones, onLoadMorePhones, onAddToBacket} from '../../actions/';
 import {getPhones} from '../../helpers';
-import { NavLink } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Phones extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ class Phones extends Component {
   }
 
   renderPhones = () => {
-    const {phones} = this.props;
+    const {phones, onAddToBacket} = this.props;
     const items = phones.map(phone => {
       const shortDescription = `${R.take(60, phone.description)}...`
       const {id, name, price, image} = phone;
@@ -30,22 +30,23 @@ class Phones extends Component {
               <div className='caption-title'>
                 <h4>${price}</h4>
                 <h4 className=''>
-                  <NavLink to={`/phones/${id}`}>{name}</NavLink>
+                  <Link to={`/phones/${id}`}>{name}</Link>
                 </h4>
               </div>
               <p>{shortDescription}</p>
               <p className='item-button'>
               <button
                 className='btn btn-primary'
+                onClick={() => onAddToBacket(id)}
               >
                 Buy Now!
               </button>
-              <NavLink
-                to={`/phones/${phone.id}`}
+              <Link
+                to={`/phones/${id}`}
                 className='btn btn-default'
               >
                 More info
-              </NavLink>
+              </Link>
             </p>
             </div>
           </div>
@@ -80,4 +81,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchPhones, onLoadMorePhones})(Phones);
+const mapDispatchToProps = {
+  fetchPhones, 
+  onLoadMorePhones, 
+  onAddToBacket
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Phones);
