@@ -5,6 +5,7 @@ import * as R from 'ramda';
 import {fetchPhones, onLoadMorePhones, onAddToBacket} from '../../actions/';
 import {getPhones} from '../../helpers';
 import { Link, withRouter } from "react-router-dom";
+import Loader from '../../components/loader';
 
 class Phones extends Component {
   static propTypes = {
@@ -59,7 +60,8 @@ class Phones extends Component {
   }
 
   render() {
-    const {onLoadMorePhones} = this.props;
+    const {onLoadMorePhones, loading} = this.props;
+    if (loading) return <Loader />
     return (
       <div>
         {this.renderPhones()}
@@ -77,7 +79,8 @@ class Phones extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    phones: getPhones(state)
+    phones: getPhones(state),
+    loading : state.phones.loading
   }
 }
 

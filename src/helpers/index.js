@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import { totalmem } from 'os';
 
 export const arrToMap = (arr) => {
   return arr.reduce((acc, item) => {
@@ -20,3 +21,15 @@ export const getPhones = state => {
 export const getRenderedPhonesLength = (state) => {
   return R.length(state.phonesPage.ids)
 }
+
+export const  getTotalBasketPrice = state => {
+  const totalPrice = R.compose(
+    R.sum,  // метод суммирующий все элементы массива, т.е цены
+    R.pluck('price'),  // ранее был у нас массив объектов, а теперь останется только строка с ценой
+    R.map(id => getPhoneId(state, id)) // проходим по массиву наших id и возвращаем через функцию соответствующие Элементы(телефоны)
+  )(state.basket)
+
+  return totalPrice
+}
+
+export const  getTotalBasketCount = state => R.length(state.basket)

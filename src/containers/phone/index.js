@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {fetchPhonesById} from '../../actions';
+import {fetchPhonesById, onAddToBacket} from '../../actions';
 import {getPhoneId} from '../../helpers';
 import * as R from 'ramda';
+import Sidebar from '../../components/sidebar';
+import {Link} from 'react-router-dom';
+import Loader from '../../components/loader';
 
 
 class Phone extends Component {
@@ -45,7 +48,7 @@ class Phone extends Component {
   renderPhone = () => {
     const {phone} = this.props;
     return (
-      <React.Fragment>
+      <div className='thumbnail'>
         <div className='row'>
           <div className='col-md-6'>
             <img className='img-thumbnail'
@@ -65,26 +68,55 @@ class Phone extends Component {
             <p>{phone.description}</p>
 
         </div>
-      </React.Fragment>
+      </div>
     )
   }
 
   render() {
-    if (!this.props.phone) return null;
-    console.log(this.props.phone)
+    const {phone, onAddToBacket} = this.props;
+    if (!phone) return null;
     return (
-      <section className='thumbnail'>
-      {this.renderPhone()}
+
+      <section className='view-container'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-9'>
+            {this.renderPhone()}
+            </div>
+            <div className='col-md-3'>
+              <div>
+                <p className='lead'>Quick shop</p>
+                <Sidebar />
+                <div className='form-group'>
+                  <h2>{phone.name}</h2>
+                  <h3>${phone.price}</h3>
+                  <Link to='/' 
+                        className='btn btn-info btn-block'
+                  >
+                    Back to store
+                  </Link>
+                  <button type='button'
+                          className='btn btn-success btn-block'
+                          onClick={() => onAddToBacket(phone.id)}
+                  >
+                    By phone!
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </section>
     )
   }
 }
   const mapStateToProps = (state) => {
-    console.log(state.phonePage.id)
     // пройдётся по state и вернёт элемент с id
     return {
       phone: getPhoneId(state, state.phonePage.id)
     }
   }
 
-  export default connect(mapStateToProps, {fetchPhonesById})(Phone);
+  export default connect(mapStateToProps, {fetchPhonesById, onAddToBacket})(Phone);

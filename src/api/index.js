@@ -3,7 +3,9 @@ import * as R from 'ramda';
 
 export const fetchPhones = async () => {
   return new Promise((resolve, reject) => {
-    resolve(phones)
+    setTimeout(() => {
+      return     resolve(phones)
+    }, 1000);
     // reject('Error')
   })
 }

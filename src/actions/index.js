@@ -25,7 +25,6 @@ export const fetchPhones = () => async (dispatch) => {
       dispatch({
         type: FETCH_PHONES_SUCCESS,
         payload: phones,
-        // generateId: true
       })
     } catch (err) {
         dispatch ({
