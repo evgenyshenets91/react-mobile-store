@@ -1,5 +1,4 @@
 import * as R from 'ramda';
-import { totalmem } from 'os';
 
 export const arrToMap = (arr) => {
   return arr.reduce((acc, item) => {
@@ -13,8 +12,19 @@ export const getPhoneId = (state, id) => R.prop(id, state.phones)
 
 // пробегает по каждому элементу из state.phonesPage.ids и возвращает Телефон по такому id
 export const getPhones = state => {
-  const phones = R.map(el => getPhoneId(state, el) , state.phonesPage.ids);
-  return phones
+  const searchString = (item) => {
+    // cмотрим совпадения в элементе по ключу 'name' по search
+    return R.includes(state.phonesPage.search, R.prop('name', item))
+  } 
+  const filteredPhones =  R.compose(
+    // пробежим по массиву функцией, которая будет искать совпадения по имени
+    R.filter(searchString),
+    R.map(el => getPhoneId(state, el))
+  )(state.phonesPage.ids)
+  return filteredPhones;
+  
+  // const phones = R.map(el => getPhoneId(state, el) , state.phonesPage.ids);
+  // return phones
 }
 
 

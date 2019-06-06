@@ -8,7 +8,8 @@ import {
   FETCH_PHONE_BY_ID_START,
   FETCH_PHONE_BY_ID_SUCCESS,
   FETCH_PHONE_BY_ID_FAILURE,
-  ADD_PHONE_TO_BACKET
+  ADD_PHONE_TO_BACKET,
+  SEARCH_PHONE
 } from '../constants';
 
 import {fetchPhones as fetchPhonesApi} from '../api/'
@@ -81,5 +82,12 @@ export const onAddToBacket = id => dispatch => {
   dispatch({
     type: ADD_PHONE_TO_BACKET,
     payload: id
+  })
+}
+
+export const searchPhone = (value) => dispatch => {
+  dispatch({
+    type: SEARCH_PHONE,
+    payload: value
   })
 }

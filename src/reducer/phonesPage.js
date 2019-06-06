@@ -1,11 +1,12 @@
 import {
-  FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS
+  FETCH_PHONES_SUCCESS, LOAD_MORE_PHONES_SUCCESS, SEARCH_PHONE
 } from '../constants';
 
 import * as R from 'ramda';
 
 const initialState = {
-  ids: []
+  ids: [],
+  search: ''
 }
 
 
@@ -25,6 +26,10 @@ export default (state = initialState, action) => {
         ids: R.concat(state.ids, id)
 
       })
+    case SEARCH_PHONE: 
+    return R.merge(state, {
+      search: payload
+    })
 
   
   }

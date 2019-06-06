@@ -15,20 +15,12 @@ class App extends Component {
   render(){
     return(
       <ConnectedRouter history={history} >
-
-
-
         <Switch>
         <Route path='/phones/:id' exact  component={Phone} />
 
         <Layout />
-        {/* <Route path='/' exact component={Phones} /> */}
-
-
         </Switch>
  
-
-
       </ConnectedRouter>
     )
   }

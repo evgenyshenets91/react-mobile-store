@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar';
 import Phones from "../phones";
+import Search from '../../components/search';
 
 const Layout = () => {
   return (
@@ -9,6 +10,7 @@ const Layout = () => {
         <div className='row'>
           <div className='col-md-3'>
             <Sidebar />
+            <Search />
           </div>
           <div className='col-md-9'>
             <Phones />

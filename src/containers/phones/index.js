@@ -17,6 +17,7 @@ class Phones extends Component {
 
   renderPhones = () => {
     const {phones, onAddToBacket} = this.props;
+    if (phones.length === 0) return <h2>Search no results</h2>
     const items = phones.map(phone => {
       const shortDescription = `${R.take(60, phone.description)}...`
       const {id, name, price, image} = phone;
