@@ -9,7 +9,6 @@ import * as R from 'ramda';
 
 
 const Categories = ({categories, activeCategoryId}) => {
-  console.log(activeCategoryId)
 
   const renderCategories = (category, idx) => {
 

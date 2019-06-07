@@ -231,6 +231,10 @@
 .open>.dropdown-menu .item-row div{
     text-align: center;
 }
+
+.table-head{
+    text-align: center;
+}
 .table-list{
     text-align: center;
     width: 100%;
