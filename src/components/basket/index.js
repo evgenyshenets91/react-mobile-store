@@ -3,20 +3,41 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {getTotalBasketPrice, getBasketPhonesCount} from '../../helpers';
 import * as R from 'ramda';
-import phone from '../../containers/phone';
+import {removePhoneFromBasket, backetCheckout, clearBasket} from '../../actions';
+import { Link } from "react-router-dom";
+
 
 const HEADTABLE = [
   'Image', 'Name', 'Price', 'Count', ''
 ]
 
-const Basket = ({phones, totalBasketPrice}) => {
-  console.log(phones)
+const Basket = ({phones, totalBasketPrice, removePhoneFromBasket, backetCheckout, clearBasket}) => {
   const isBasketEmpty = R.isEmpty(phones); // true если нету товаров в корзине
 
   const renderSidebar = () => {
     return (
       <div>
-        Sidebar
+        <Link to='/'
+              className='btn btn-info'
+        >
+        <span className='glyphicon glyphicon-info-sign' />
+        <span>Continue Shopping</span>
+        </Link>
+        { R.not(isBasketEmpty) && 
+          <div>
+            <button className='btn btn-warning'
+                    onClick={clearBasket}
+            >
+            <span className='glyphicon glyphicon-trash' />
+            Clear cart
+            </button>
+            <button className='btn btn-success'
+                    onClick={() => backetCheckout(phones)}
+            >
+            <span className='glyphicon glyphicon-envelope' />
+            Checkout
+            </button>
+          </div> }
       </div>
     )
   }
@@ -30,7 +51,7 @@ const Basket = ({phones, totalBasketPrice}) => {
           <table className='table-bordered table-striped table-condensed cf'>
           <thead>
           <tr>
-            { !isBasketEmpty && HEADTABLE.map((el, i) => (
+            { R.not(isBasketEmpty) && HEADTABLE.map((el, i) => (
               <td key={i}
                   className='table-head'
               >
@@ -57,8 +78,8 @@ const Basket = ({phones, totalBasketPrice}) => {
                 <td>${phone.price}</td>
                 <td>{phone.count}</td>
                 <td>
-                    <span
-                      className='delete-cart'
+                    <span onClick={() => removePhoneFromBasket(phone.id)}
+                          className='delete-cart'
                     />
                 </td>
               </tr>
@@ -104,7 +125,7 @@ const mapStateToProps = (state) => {
   
 }
 
-export default connect(mapStateToProps, null)(Basket)
+export default connect(mapStateToProps, {removePhoneFromBasket, backetCheckout, clearBasket})(Basket)
 
 Basket.propTypes = {
   phones: PropTypes.array,

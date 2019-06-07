@@ -12,7 +12,10 @@ import {
   SEARCH_PHONE,
   FETCH_CATEGORIES_START,
   FETCH_CATEGORIES_SUCCESS,
-  FETCH_CATEGORIES_FAILURE
+  FETCH_CATEGORIES_FAILURE,
+  REMOVE_PHONE_FROM_BASKET,
+  CLEAN_BASKET,
+  CHECKOUT_PHONES
 } from '../constants';
 
 import {fetchPhones as fetchPhonesApi} from '../api/'
@@ -114,4 +117,18 @@ export const searchPhone = (value) => dispatch => {
     type: SEARCH_PHONE,
     payload: value
   })
+}
+
+export const removePhoneFromBasket = (id) => ({
+    type: REMOVE_PHONE_FROM_BASKET,
+    payload: id
+})
+
+export const clearBasket = () => ({
+  type: CLEAN_BASKET,
+
+})
+
+export const backetCheckout = (phones) => {
+  return  alert(JSON.stringify(phones))
 }

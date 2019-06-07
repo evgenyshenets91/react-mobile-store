@@ -100,6 +100,10 @@
     justify-content: space-between;
 }
 
+.glyphicon {
+    margin-right: 10px
+}
+
 .caption-title{
     display: flex;
     justify-content: space-between;
@@ -204,6 +208,9 @@
 }
 .delete-cart:hover{
     cursor: pointer;
+}
+.space-margin {
+    margin-right: 10px;
 }
 
 .books{
