@@ -9,11 +9,14 @@ import {
   FETCH_PHONE_BY_ID_SUCCESS,
   FETCH_PHONE_BY_ID_FAILURE,
   ADD_PHONE_TO_BACKET,
-  SEARCH_PHONE
+  SEARCH_PHONE,
+  FETCH_CATEGORIES_START,
+  FETCH_CATEGORIES_SUCCESS,
+  FETCH_CATEGORIES_FAILURE
 } from '../constants';
 
 import {fetchPhones as fetchPhonesApi} from '../api/'
-import {loadMorePhonesApi, loadFetchPhoneIdApi} from '../api/';
+import {loadMorePhonesApi, loadFetchPhoneIdApi, fetchCategoriesApi} from '../api/';
 import {getRenderedPhonesLength} from '../helpers/';
 
 // т.к подключили thunk, можем писать асинхронные экшэны, без использования then
@@ -36,6 +39,27 @@ export const fetchPhones = () => async (dispatch) => {
     }
 
 }
+
+export const fetchCategories = () => async (dispatch) => {
+  dispatch({
+    type: FETCH_CATEGORIES_START,
+  })
+    try {
+      const categories = await fetchCategoriesApi();
+      dispatch({
+        type: FETCH_CATEGORIES_SUCCESS,
+        payload: categories,
+      })
+    } catch (err) {
+        dispatch ({
+        type: FETCH_CATEGORIES_FAILURE,
+        payload: {err},
+        error: true
+      })
+    }
+
+}
+
 export const onLoadMorePhones = () => async (dispatch, getState) => {
   const offset = getRenderedPhonesLength(getState())
   dispatch({

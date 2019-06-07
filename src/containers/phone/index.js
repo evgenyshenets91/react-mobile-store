@@ -85,7 +85,6 @@ class Phone extends Component {
             </div>
             <div className='col-md-3'>
               <div>
-                <p className='lead'>Quick shop</p>
                 <Sidebar />
                 <div className='form-group'>
                   <h2>{phone.name}</h2>

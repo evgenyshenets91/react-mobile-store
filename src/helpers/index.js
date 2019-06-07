@@ -1,32 +1,36 @@
 import * as R from 'ramda';
 
-export const arrToMap = (arr) => {
-  return arr.reduce((acc, item) => {
-    acc[item.id] = item;
-    return acc
-  }, {})
-}
-
 // функция принимает Id и выводит отдельный телефон
 export const getPhoneId = (state, id) => R.prop(id, state.phones)
 
+
+export const getActiveCategId = id => R.path(['match', 'params', 'id'], id)
+
 // пробегает по каждому элементу из state.phonesPage.ids и возвращает Телефон по такому id
-export const getPhones = state => {
-  const searchString = (item) => {
+export const getPhones = (state, ownProps) => {
+  const activeCategory = getActiveCategId(ownProps);
+  const applySearch = (item) => {
     // cмотрим совпадения в элементе по ключу 'name' по search
-    return R.includes(state.phonesPage.search, R.prop('name', item))
+    return R.includes(state.phonesPage.search.toLowerCase(), R.toLower(R.prop('name', item)))
   } 
+
+  const applyCategory = (item) => (R.equals(activeCategory, R.prop('categoryId', item)));
   const filteredPhones =  R.compose(
     // пробежим по массиву функцией, которая будет искать совпадения по имени
-    R.filter(searchString),
-    R.map(el => getPhoneId(state, el))
-  )(state.phonesPage.ids)
+    R.filter(applySearch), // фильтруем по поиску
+    R.when(R.always(activeCategory), R.filter(applyCategory)), // проверяем нужно ли нам фильтровать  по категории
+    R.map(id => getPhoneId(state, id))   // проходимся по id и возвращаем сами объекты в массив
+  )(state.phonesPage.ids);  // есть на вход Id телефонов
+
   return filteredPhones;
-  
   // const phones = R.map(el => getPhoneId(state, el) , state.phonesPage.ids);
   // return phones
 }
 
+export const getCategories = state => {
+  //вернёт массив с значениями
+  return R.values(state.categories)
+}
 
 export const getRenderedPhonesLength = (state) => {
   return R.length(state.phonesPage.ids)
@@ -42,4 +46,6 @@ export const  getTotalBasketPrice = state => {
   return totalPrice
 }
 
-export const  getTotalBasketCount = state => R.length(state.basket)
+export const  getTotalBasketCount = state => R.length(state.basket);
+
+export const getActiveCategoryId = id => R.path(['id', 'params', 'id'], id);

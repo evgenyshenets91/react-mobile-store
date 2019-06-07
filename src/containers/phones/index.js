@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as R from 'ramda';
-import {fetchPhones, onLoadMorePhones, onAddToBacket} from '../../actions/';
+import {fetchPhones, onLoadMorePhones, onAddToBacket, fetchCategories} from '../../actions/';
 import {getPhones} from '../../helpers';
 import { Link, withRouter } from "react-router-dom";
 import Loader from '../../components/loader';
+import {compose} from 'redux'
 
 class Phones extends Component {
   static propTypes = {
 
   }
   componentDidMount(){
-    this.props.fetchPhones()
+    this.props.fetchPhones();
+    this.props.fetchCategories();
   }
 
   renderPhones = () => {
@@ -78,9 +80,10 @@ class Phones extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  //ownProps через withRouter прокидывает сюда history.
   return {
-    phones: getPhones(state),
+    phones: getPhones(state, ownProps),
     loading : state.phones.loading
   }
 }
@@ -88,7 +91,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   fetchPhones, 
   onLoadMorePhones, 
-  onAddToBacket
+  onAddToBacket,
+  fetchCategories
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Phones);
+// export default connect(mapStateToProps, mapDispatchToProps)(Phones);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+  )(Phones)

@@ -205,9 +205,14 @@
 .delete-cart:hover{
     cursor: pointer;
 }
+
+.books{
+    padding-left: 0px;
+}
 .books .book-list{
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+
 }
 .well{
     border-radius: 0 0 4px 4px;

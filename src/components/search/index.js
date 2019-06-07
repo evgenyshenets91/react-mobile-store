@@ -20,8 +20,8 @@ class Search extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.props.searchPhone(this.state.value))
     this.props.searchPhone(this.state.value)
+
   }
 
   render() {
@@ -44,6 +44,7 @@ class Search extends Component {
               <span className='glyphicon glyphicon-search' />
             </button>
           </span>
+
         </div>
       </div>
     )
