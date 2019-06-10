@@ -69,7 +69,7 @@ export const onLoadMorePhones = () => async (dispatch, getState) => {
     type: LOAD_MORE_PHONES_START,
   })
     try {
-      const phones = await loadMorePhonesApi({offset});
+      const phones = await loadMorePhonesApi(offset);
       dispatch({
         type: LOAD_MORE_PHONES_SUCCESS,
         payload: phones
