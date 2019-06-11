@@ -55,10 +55,13 @@ export const getBasketPhonesCount = state => {
   const phoneCount = (id) => {
     return state.basket.filter(el => el === id).length;
   }
+
   const phoneWithCount = phone => (R.assoc('count', phoneCount(phone.id), phone));
+
   const phones = R.compose(
     R.map(phoneWithCount), // будет создаваться поле в массиве объектов С количеством одинаковых элементов
     R.map(id => getPhoneId(state, id))
   )(uniqIds)
-  return phones
+  return phones;
 }
+

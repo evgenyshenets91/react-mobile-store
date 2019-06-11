@@ -6,6 +6,7 @@ import {
   FETCH_PHONE_BY_ID_SUCCESS
 } from '../constants';
 import * as R from 'ramda';
+import { compileFunction } from 'vm';
 
 const initialState = {
   loading: false
@@ -21,9 +22,9 @@ export default (state = initialState, action) => {
       return R.set(update, true, state)
 
     case FETCH_PHONES_SUCCESS:
-      const newValues = R.indexBy(R.prop('id'), payload)
-      const newValueLoad = R.set(R.lensProp('loading'), false, state)
-      return R.merge(R.merge(state, newValueLoad), newValues, newValueLoad)
+      const newValues = R.indexBy(R.prop('id'), payload);
+      const newValueLoad = R.set(R.lensProp('loading'), false, state);
+      return R.merge(R.merge(state, newValueLoad), newValues);
 
     case LOAD_MORE_PHONES_SUCCESS:
     const loadValues = R.indexBy(R.prop('id'), payload)

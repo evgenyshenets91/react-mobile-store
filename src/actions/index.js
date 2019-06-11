@@ -15,7 +15,8 @@ import {
   FETCH_CATEGORIES_FAILURE,
   REMOVE_PHONE_FROM_BASKET,
   CLEAN_BASKET,
-  CHECKOUT_PHONES
+  INCREMENT_COUNT_PHONES,
+  DECREMENT_COUNT_PHONES
 } from '../constants';
 
 import {fetchPhones as fetchPhonesApi} from '../api/'
@@ -132,3 +133,13 @@ export const clearBasket = () => ({
 export const backetCheckout = (phones) => {
   return  alert(JSON.stringify(phones))
 }
+
+export const increment = (id) => ({
+  type: INCREMENT_COUNT_PHONES,
+  payload: id
+})
+
+export const decrement = (id) => ({
+  type: DECREMENT_COUNT_PHONES,
+  payload: id
+})

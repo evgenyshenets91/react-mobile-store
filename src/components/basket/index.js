@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {getTotalBasketPrice, getBasketPhonesCount} from '../../helpers';
 import * as R from 'ramda';
-import {removePhoneFromBasket, backetCheckout, clearBasket} from '../../actions';
+import {removePhoneFromBasket, backetCheckout, clearBasket, increment, decrement} from '../../actions';
 import { Link } from "react-router-dom";
 
 
@@ -11,7 +11,7 @@ const HEADTABLE = [
   'Image', 'Name', 'Price', 'Count', ''
 ]
 
-const Basket = ({phones, totalBasketPrice, removePhoneFromBasket, backetCheckout, clearBasket}) => {
+const Basket = ({phones, totalBasketPrice, removePhoneFromBasket, backetCheckout, clearBasket, increment, decrement}) => {
   const isBasketEmpty = R.isEmpty(phones); // true если нету товаров в корзине
 
   const renderSidebar = () => {
@@ -74,9 +74,21 @@ const Basket = ({phones, totalBasketPrice, removePhoneFromBasket, backetCheckout
                     alt={phone.name}
                   />
                 </td>
-                <td>{phone.name}</td>
+                <td>
+                  <Link to={`/phones/${phone.id}`}>
+                    {phone.name}
+                  </Link>
+                </td>
                 <td>${phone.price}</td>
-                <td>{phone.count}</td>
+                <td>
+                  <span className='glyphicon glyphicon-minus-sign decrement'
+                        onClick={() => decrement(phone.id)}    
+                  />
+                  {phone.count}
+                  <span className='glyphicon glyphicon-plus-sign increment' 
+                        onClick={() => increment(phone.id)}
+                  />
+                </td>
                 <td>
                     <span onClick={() => removePhoneFromBasket(phone.id)}
                           className='delete-cart'
@@ -125,7 +137,11 @@ const mapStateToProps = (state) => {
   
 }
 
-export default connect(mapStateToProps, {removePhoneFromBasket, backetCheckout, clearBasket})(Basket)
+export default connect(mapStateToProps, {removePhoneFromBasket, 
+                                         backetCheckout, 
+                                         clearBasket, 
+                                         increment, 
+                                         decrement})(Basket)
 
 Basket.propTypes = {
   phones: PropTypes.array,

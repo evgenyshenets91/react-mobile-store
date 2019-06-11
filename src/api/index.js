@@ -31,7 +31,6 @@ export const loadMorePhonesApi = async (offset) => {
   // })
   const response = await fetch('http://www.mocky.io/v2/5cfe195e3200002c0045ee65');
   const data  = await response.json();
-  debugger
   return data.phones.slice(offset, offset + 3)
 }
 

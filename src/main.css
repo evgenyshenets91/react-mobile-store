@@ -101,7 +101,14 @@
 }
 
 .glyphicon {
-    margin-right: 10px
+    cursor: pointer;
+}
+ .glyphicon.decrement{
+    margin-right: 10px;
+}
+
+.glyphicon.increment{
+    margin-left: 10px;
 }
 
 .caption-title{
