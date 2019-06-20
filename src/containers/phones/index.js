@@ -101,7 +101,7 @@ const mapDispatchToProps = {
 
 // export default HocLoader(connect(mapStateToProps, mapDispatchToProps)(Phones));
 
-export default HocLoader(compose(
+export default HocLoader('http://i.imgur.com/QxsxVEc.gif')(compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
   )(Phones));

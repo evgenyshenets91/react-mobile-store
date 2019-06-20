@@ -1,14 +1,24 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Loader from '../components/loader/';
 import { connect } from 'react-redux'
 
 
-export const HocLoader = Wrapped => connect(mapStateToProps, null)(class extends React.PureComponent {
-  render(){
-    return (
-      // this.props.loading ? <Loader /> : <Wrapped {...this.props}/>
-      <Wrapped {...this.props}/>
+export const HocLoader = (loaderPath) => Wrapped => connect(mapStateToProps, null)(class extends React.PureComponent {
 
+  loadComponent = () => {
+    return (
+      <div>
+        <img src={loaderPath} />
+      </div>
+    )
+  }
+
+  render(){   
+    return (
+      <Fragment>
+        {this.props.loading && this.loadComponent()}
+        <Wrapped {...this.props}/>
+      </Fragment>
     )
   }
 });
