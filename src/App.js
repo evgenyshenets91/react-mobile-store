@@ -16,15 +16,12 @@ class App extends Component {
   render(){
     return(
       <ConnectedRouter history={history} >
-
-        {/* <BrowserRouter> */}
           <Switch>
             <Route path='/basket' exact component={Basket} />
             <Route path='/categories/:id'  component={Layout} />
             <Route path='/phones/:id' component={Phone} />
             <Route path='/' component={Layout} />
           </Switch>
-        {/* </BrowserRouter> */}
       </ConnectedRouter>
     )
   }

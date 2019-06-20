@@ -7,6 +7,7 @@ import {getPhones} from '../../helpers';
 import { Link, withRouter } from "react-router-dom";
 import Loader from '../../components/loader';
 import {compose} from 'redux'
+import {HocLoader} from '../../withData';
 
 class Phones extends Component {
   static propTypes = {
@@ -16,6 +17,7 @@ class Phones extends Component {
     this.props.fetchPhones();
     this.props.fetchCategories();
   }
+
 
   renderPhones = () => {
     const {phones, onAddToBacket} = this.props;
@@ -62,9 +64,11 @@ class Phones extends Component {
 
   }
 
+
+
   render() {
     const {onLoadMorePhones, loading} = this.props;
-    if (loading) return <Loader />
+    // if (loading) return <Loader />
     return (
       <div>
         {this.renderPhones()}
@@ -81,10 +85,10 @@ class Phones extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  //ownProps через withRouter прокидывает сюда history.
+  // ownProps через withRouter прокидывает сюда history.
   return {
     phones: getPhones(state, ownProps),
-    loading : state.phones.loading
+    // loading : state.phones.loading
   }
 }
 
@@ -95,8 +99,9 @@ const mapDispatchToProps = {
   fetchCategories
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Phones);
-export default compose(
+// export default HocLoader(connect(mapStateToProps, mapDispatchToProps)(Phones));
+
+export default HocLoader(compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
-  )(Phones)
+  )(Phones));

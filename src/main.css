@@ -103,8 +103,17 @@
 .glyphicon {
     cursor: pointer;
 }
+
+.glyphicon.sort{
+    top: 3px;
+}
  .glyphicon.decrement{
     margin-right: 10px;
+}
+
+.glyphicon.arrow{
+    top: 3px;
+    right: 2px;
 }
 
 .glyphicon.increment{
