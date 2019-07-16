@@ -67,6 +67,7 @@ class Phones extends Component {
 
 
   render() {
+    console.log(this)
     const {onLoadMorePhones, loading} = this.props;
     // if (loading) return <Loader />
     return (
